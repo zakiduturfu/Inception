@@ -1,5 +1,4 @@
 
-# this dockerfile is used to build the image for the nginx container
 FROM	debian:bullseye
 
 EXPOSE	443
@@ -20,7 +19,7 @@ RUN mkdir -p ${CERT_FOLDER} && \
 COPY	conf/nginx.conf	/etc/nginx/
 COPY	conf/server.conf	/etc/nginx/conf.d/
 
-RUN		echo "\tserver name ${COMMON_NAME};\n\
+RUN		echo "\tserver_name ${COMMON_NAME};\n\
 			\tssl_certificate ${CERTIFICATE};\n\
 			\tssl_certificate_key ${KEY};\n\
 			}" >> /etc/nginx/conf.d/server.conf
